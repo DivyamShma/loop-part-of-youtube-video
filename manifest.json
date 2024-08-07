@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "YouTube ",
+    "name": "YouTube Time Keeper",
     "version": "1.0",
     "description": "Keeps YouTube video playback within a specified time range",
     "permissions": ["activeTab"],
