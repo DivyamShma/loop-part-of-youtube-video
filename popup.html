@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Time Keeper</title>
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --background-color: #ecf0f1;
+      --text-color: #34495e;
+      --input-background: #fff;
+      --button-hover: #2980b9;
+    }
+
+    body {
+      width: 300px;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    h2 {
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      width: 50px;
+      padding: 5px;
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      background-color: var(--input-background);
+      color: var(--text-color);
+      font-size: 14px;
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      margin-right: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+  <h2>YouTube Time Keeper</h2>
+  <p>Set the time range for the video (HH:MM:SS):</p>
+  <label>
+    Start Time:
+    <input type="number" id="startHours" min="0" max="23" step="1">:
+    <input type="number" id="startMinutes" min="0" max="59" step="1">:
+    <input type="number" id="startSeconds" min="0" max="59" step="1">
+  </label>
+  <label>
+    End Time:
+    <input type="number" id="endHours" min="0" max="23" step="1">:
+    <input type="number" id="endMinutes" min="0" max="59" step="1">:
+    <input type="number" id="endSeconds" min="0" max="59" step="1">
+  </label>
+  <button id="setButton">Set</button>
+  <button id="resetButton">Reset</button>
+  
+  <p id="status"></p>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube ",
+    "version": "1.0",
+    "description": "Keeps YouTube video playback within a specified time range",
+    "permissions": ["activeTab"],
+  "host_permissions": ["*://www.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+      }
+    }
+  }
