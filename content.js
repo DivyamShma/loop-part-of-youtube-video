@@ -2,6 +2,12 @@
 let startTime = 0;
 let endTime = 0;
 let checkInterval = null;
+let currentVideoId = null;
+
+// Function to get the current video id from the url
+function getVideoId() {
+  return new URLSearchParams(window.location.search).get('v');
+}
 
 // Function to check and reset video time
 function checkVideoTime() {
@@ -24,6 +30,20 @@ function startChecking() {
       checkInterval = null;
     }
   }
+
+// Function to monitor for video changes
+function monitorVideoChange() {
+  setInterval(() => {
+      const newVideoId = getVideoId();
+      if (newVideoId !== currentVideoId) {
+          currentVideoId = newVideoId;
+          stopChecking();  // Stop the old timer
+          startTime = 0;
+          endTime = Infinity;
+          console.log("Video changed, restarting timer...");
+      }
+  }, 100); // Check for changes every 0.1 seconds
+}
   
 // Listen for messages from the popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -44,7 +64,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   });
 
-  // Notify popup when a new video loads
-document.addEventListener('yt-navigate-finish', function() {
-    chrome.runtime.sendMessage({action: "videoLoaded"});
-  });
+// Start monitoring for video changes
+monitorVideoChange();
