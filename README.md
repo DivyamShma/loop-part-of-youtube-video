@@ -54,13 +54,19 @@ The function `getVideoId` return the unique video id for the current video playi
 The function `checkVideoTime` simply checks if the current time of the video is between that interval, and if it exceeds or preceeds it, it gets reset to the `starttime`.
 
 `startChecking()`: This function starts a periodic check using `setInterval`.
+
 `if (checkInterval)`: Checks if `checkInterval` is already set (i.e., not `null` or `undefined`).
+
 `clearInterval(checkInterval)`: If checkInterval is already set, it clears (stops) the interval to prevent multiple intervals running simultaneously.
+
 `checkInterval = setInterval(checkVideoTime, 1000);`: Sets checkInterval to a new interval created by setInterval. It calls the `checkVideoTime` function every 1000 milliseconds (1 second).
 
 `stopChecking()`: This function stops the periodic check started by `startChecking()`.
+
 `if (checkInterval)`: Checks if checkInterval is set (not `null` or `undefined`).
+
 `clearInterval(checkInterval)`: Clears (stops) the interval timer referenced by `checkInterval`.
+
 `checkInterval = null;`: Resets checkInterval to `null`, indicating that no interval is currently active.
 
 The function `monitorVideoChange` bascially does what it says,..(go on move ahead no need to read more if you get it)... *sign*, fine! i'll explain, basically it just keeps checking every 0.1 secs that if the video id is still the same or has it changed, if it has changed then we call the function `stopChecking()` and reset the timer back to normal and send a message to the console.
